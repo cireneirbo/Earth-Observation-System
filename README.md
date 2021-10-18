@@ -12,6 +12,6 @@ A system for alerting users to local and regional disasters using the NASA EONET
 ## Getting Started
 * Fork or Clone repository
 * install dependencies with `npm install`
-* create file '.env' in the root directory
-* inside '.env', copy-paste the code from '.env-sample' and replace value with your API key from https://api.nasa.gov/
+* create file `.env` in the root directory
+* inside `.env`, copy-paste the code from '.env-sample' and replace value with your API key from https://api.nasa.gov/
 * run with `npm start`
