@@ -11,14 +11,16 @@ router.get('/', function(req, res, next) {
 // GET events page
 let eventsData = {};
 router.get('/events', (req, res, next) => {
-  request('https://eonet.sci.gsfc.nasa.gov/api/v3/events?limit=5&days=20&source=InciWeb&status=open', function (error, response, body) {
+  request('https://eonet.sci.gsfc.nasa.gov/api/v3/events?limit=5&days=200&source=InciWeb&status=open', function (error, response, data) {
     if(error) {
       console.error('error:', error); // Print the error if one occurred
     }
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('body:', body); // Print the response for the API.
-    res.send(body);
-    eventsData = body;
+    console.log('data:', data); // Print the response for the API.
+    
+    res.render('index', {title: 'Events', data: data, dataTitle: data.title});
+    //res.send(data);
+    eventsData = data;
   });
 });
 
