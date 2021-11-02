@@ -17,5 +17,7 @@ A system for alerting users to local and regional disasters using the NASA EONET
 * inside `.env`, copy-paste the code from `.env-sample` and replace value with your API key from https://api.nasa.gov/
 * run with `npm start`
 
-### Helpful Links
+## Helpful Links
 * HTML to Jade - https://html2jade.org/
+* DigitalOcean hosting - https://www.digitalocean.com/pricing/
+* Heroku hosting - https://id.heroku.com/login
