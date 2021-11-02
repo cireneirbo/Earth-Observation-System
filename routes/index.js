@@ -1,29 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const request = require('request'); // library used to make API calls
-
+var express = require('express');
+var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-// GET events page
-let eventsData = {};
-router.get('/events', (req, res, next) => {
-  request('https://eonet.sci.gsfc.nasa.gov/api/v3/events?limit=5&days=200&source=InciWeb&status=open', function (error, response, data) {
-    if(error) {
-      console.error('error:', error); // Print the error if one occurred
-    }
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('data:', data); // Print the response for the API.
-    
-    res.render('index', {title: 'Events', data: data, dataTitle: data.title});
-    //res.send(data);
-    eventsData = data;
-  });
+/* GET events page. */
+router.get('/events', function(req, res, next) {
+  res.render('events', { title: 'Express' });
 });
-
-
 
 module.exports = router;
