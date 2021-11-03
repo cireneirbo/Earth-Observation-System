@@ -21,3 +21,4 @@ A system for alerting users to local and regional disasters using the NASA EONET
 * HTML to Jade - https://html2jade.org/
 * DigitalOcean hosting - https://www.digitalocean.com/pricing/
 * Heroku hosting - https://id.heroku.com/login
+* Twitter API - https://developer.twitter.com/en/docs/twitter-api
