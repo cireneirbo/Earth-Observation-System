@@ -8,6 +8,7 @@ A system for alerting users to local and regional disasters using the NASA EONET
 * EJS https://www.npmjs.com/package/ejs
 * Jade https://www.npmjs.com/package/jade
 * Request https://www.npmjs.com/package/request
+* Axios https://www.npmjs.com/package/axios
 
 
 ## Getting Started
