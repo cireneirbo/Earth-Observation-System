@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const events = require("../api-returns/events");
-//const apiCall = require("../api-returns/eonet.mjs");
+const events = require("../controllers/events");
 const axios = require("axios").default; // .default allows for typescript intellisense, if necessary
 
 /* GET home page. */
