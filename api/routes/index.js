@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const events = require("../controllers/events");
+const events = require("../controllers/eventsController");
 const axios = require("axios").default; // .default allows for typescript intellisense, if necessary
 
 /* GET home page. */
