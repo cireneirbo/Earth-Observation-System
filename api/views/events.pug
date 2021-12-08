@@ -1,24 +1,21 @@
 extends layout 
 
 block content
-  body
-    #wrapper
-      article#details
-    div
-        header
-          h1 Earth Observation System
-          p
-            | A system for alerting users to local and regional disasters using the 
-            a(href='https://eonet.sci.gsfc.nasa.gov/docs/v3' target='_blank') NASA EONET
-            |  API.
-        section
-          table
-            tbody
-              tr
-                th Title
-                th Events
-              tr
-                td #{data}
-                td #{data}
-                  
+  //- h1 Event: #{event.data}
+  //- p #{event.date}
 
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Events
+    h4= events
+    #container
+    each event in events.events
+      |
+      li= event.id 
+      li= event.title 
+      li= event.link 
+      hr
+        |
+
+    else
+      p This API has no events.
