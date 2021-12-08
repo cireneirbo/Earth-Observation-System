@@ -1,21 +1,16 @@
 extends layout 
 
 block content
-  //- h1 Event: #{event.data}
-  //- p #{event.date}
-
-  div(style='margin-left:20px;margin-top:20px')
-
+  div
     h4 Events
-    h4= events
     #container
     each event in events.events
-      |
-      li= event.id 
-      li= event.title 
-      li= event.link 
-      hr
-        |
+        p ID | #{event.id}
+        p Title | #{event.title}
+        p Link | 
+          a(href="#{event.link}") #{event.link}
+        hr
+          |
 
     else
       p This API has no events.

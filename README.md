@@ -22,3 +22,5 @@ A system for alerting users to local and regional disasters using the NASA EONET
 * DigitalOcean hosting - https://www.digitalocean.com/pricing/
 * Heroku hosting - https://id.heroku.com/login
 * Twitter API - https://developer.twitter.com/en/docs/twitter-api
+* JS Time Functions https://stackoverflow.com/questions/24741530/in-javascript-how-can-i-have-a-function-run-at-a-specific-time
+* Pug Reference https://pugjs.org/language/iteration.html
