@@ -10,11 +10,14 @@ A system for alerting users to local and regional disasters using the NASA EONET
 * navigate to `http://localhost:3000/`
 
 ## Dependencies
-* [Express](https://expressjs.com/en/4x/api.html)
-* [NASA's Earth Observatory Natural Event Tracker (EONET) API](https://eonet.sci.gsfc.nasa.gov/docs/v3)
-* [Pug](https://www.npmjs.com/package/pug)
+* [Express](https://expressjs.com/en/4x/api.html) - A lightweight, Node.js backend framework.
+* [NASA's Earth Observatory Natural Event Tracker (EONET) API](https://eonet.sci.gsfc.nasa.gov/docs/v3) - NASA API with data on currnet natural disasters.
+* [Pug](https://www.npmjs.com/package/pug) - An HTML templating library.
 * [Request](https://www.npmjs.com/package/request)
-* [Axios](https://www.npmjs.com/package/axios)
+* [Axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for the browser and node.js.
+* [Helmet](https://www.npmjs.com/package/helmet) - Helps secure Express apps.
+* [Mongoose](https://www.npmjs.com/package/mongoose) - ODM for communicating with MongoDB.
+* [Luxon](https://www.npmjs.com/package/luxon) - Converts Date strings into a more readable form.
 
 
 ## Helpful Links

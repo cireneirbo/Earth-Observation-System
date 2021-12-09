@@ -5,10 +5,10 @@ block content
     h4 Events
     #container
     each event in events.events
-        p ID | #{event.id}
+        p ID    | #{event.id}
         p Title | #{event.title}
-        p Link | 
-          a(href="#{event.link}") #{event.link}
+        p Link  | 
+          a(href=event.link) #{event.link}
         hr
           |
 
