@@ -9,6 +9,9 @@ A system for alerting users to local and regional disasters using the NASA EONET
 * run with `npm start`
 * navigate to `http://localhost:3000/`
 
+### Setting Up Database
+* [Mozilla Developer Network MongoDB Setup](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose#setting_up_the_mongodb_database) - A tutorial for setting up a MongoDB connection.
+
 ## Dependencies
 * [Express](https://expressjs.com/en/4x/api.html) - A lightweight, Node.js backend framework.
 * [NASA's Earth Observatory Natural Event Tracker (EONET) API](https://eonet.sci.gsfc.nasa.gov/docs/v3) - NASA API with data on currnet natural disasters.
@@ -18,6 +21,8 @@ A system for alerting users to local and regional disasters using the NASA EONET
 * [Helmet](https://www.npmjs.com/package/helmet) - Helps secure Express apps.
 * [Mongoose](https://www.npmjs.com/package/mongoose) - ODM for communicating with MongoDB.
 * [Luxon](https://www.npmjs.com/package/luxon) - Converts Date strings into a more readable form.
+* [MongoDB]()
+* [Dotenv]()
 
 
 ## Helpful Links
@@ -27,3 +32,4 @@ A system for alerting users to local and regional disasters using the NASA EONET
 * Twitter API - https://developer.twitter.com/en/docs/twitter-api
 * JS Time Functions https://stackoverflow.com/questions/24741530/in-javascript-how-can-i-have-a-function-run-at-a-specific-time
 * Pug Reference https://pugjs.org/language/iteration.html
+* Netlify https://www.netlify.com/

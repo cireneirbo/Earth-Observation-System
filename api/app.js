@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const helmet = require('helmet');
+require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -13,10 +14,11 @@ const app = express();
 
 // Setting up Mongoose and MongoDB
 const mongoose = require('mongoose');                                                                                             //Import the mongoose module
+const { doesNotThrow } = require('assert');
 const dbUserName = process.env.MONGODB_USERNAME;
 const dbPassword = process.env.MONGODB_PASSWORD;
 const dbName = process.env.MONGODB_DBNAME;
-const mongoDB = `mongodb+srv://${dbUserName}:${dbPassword}@cluster0.zwekp.mongodb.net/${dbName}?retryWrites=true&w=majority`;     // Store the DB origin
+const mongoDB = `mongodb+srv://${dbUserName}:${dbPassword}@cluster0.umoy2.mongodb.net/${dbName}?retryWrites=true&w=majority`;     // Store the DB origin
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});                                                     //Set up default mongoose connection
 const db = mongoose.connection;                                                                                                   //Get the default connection
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));       
