@@ -32,4 +32,6 @@ A system for alerting users to local and regional disasters using the NASA EONET
 * Twitter API - https://developer.twitter.com/en/docs/twitter-api
 * JS Time Functions https://stackoverflow.com/questions/24741530/in-javascript-how-can-i-have-a-function-run-at-a-specific-time
 * Pug Reference https://pugjs.org/language/iteration.html
-* Netlify https://www.netlify.com/
+* [Netlify](https://www.netlify.com/) - hosting for ReactJS
+* [Kue](https://www.npmjs.com/package/kue) - manages background tasks in Node.js backends.
+* [More Kue](https://www.javascripttuts.com/create-node-js-background-task-using-kue-workers/)
