@@ -14,7 +14,7 @@ exports.index = function (req, res, next) {
   async function getNasaEvents() {
       try {
           const response = await axios.get(nasaApiUrl);
-          //console.log(response.data.events);
+          console.log(response.data);
           res.render('events', { title: 'EONET Events', events: response.data } );
           //return response;
       } catch (error) {

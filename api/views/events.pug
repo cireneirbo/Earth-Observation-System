@@ -2,15 +2,29 @@ extends layout
 
 block content
   div
-    h4 Events
+    h4= events.title
+    p= events.description
     #container
-    each event in events.events
-        p ID    | #{event.id}
-        p Title | #{event.title}
-        p Link  | 
-          a(href=event.link) #{event.link}
-        hr
-          |
-
+    each event in events.events 
+      table 
+        tbody 
+          tr 
+            th.table-header ID 
+            td.table-data #{event.id}
+          tr 
+            th.table-header Title
+            td.table-data #{event.title}
+          tr 
+            th.table-header Link 
+            td.table-data 
+              a(href=event.link) #{event.link}
+          tr 
+            th.table-header Latitude
+            td.table-data #{event.geometry[0].coordinates[1]}
+          tr 
+            th.table-header Longitude
+            td.table-data #{event.geometry[0].coordinates[0]}
+      hr
+        |
     else
       p This API has no events.
