@@ -6,3 +6,48 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+/* Events Table in events.pug*/
+#events {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  max-width: 100%;
+}
+
+#events td, #events th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#events tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+#events tr:hover {
+  background-color: #ddd;
+}
+
+#events th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  max-width: 30%;
+  overflow: hidden;
+  color: white;
+}
+
+.table-id {
+  background-color: #54F4B3;
+}
+
+.table-header {
+  background-color: #5FAAF2;
+}
+
+.table-data {
+  min-width: 80%;
+  max-width: 100%;
+  overflow: hidden;
+}
