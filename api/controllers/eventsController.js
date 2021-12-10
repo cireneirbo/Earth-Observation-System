@@ -1,6 +1,7 @@
 // import libraries and project files
 const axios = require("axios");
 const async = require("async");
+const { body, validationResult } = require('express-validator');
 //const { response } = require("express"); // what the heck is this for?
 //const { getEonetEventsAsync } = require("../utils/getEonetEvents");
 
