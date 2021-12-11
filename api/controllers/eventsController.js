@@ -2,8 +2,6 @@
 const axios = require("axios");
 const async = require("async");
 const { body, validationResult } = require('express-validator');
-//const { response } = require("express"); // what the heck is this for?
-//const { getEonetEventsAsync } = require("../utils/getEonetEvents");
 
 // Make a request for data from NASA API
 exports.index = function (req, res, next) {
@@ -11,7 +9,7 @@ exports.index = function (req, res, next) {
   // declare url
   const nasaApiUrl = "https://eonet.sci.gsfc.nasa.gov/api/v3/events?limit=5&days=400&source=InciWeb&status=open";
 
-  // GET request to return events data from EONET
+  // declare GET request to return events data from EONET
   async function getNasaEvents() {
       try {
           const response = await axios.get(nasaApiUrl);
@@ -24,6 +22,7 @@ exports.index = function (req, res, next) {
       }
   }
 
+  // Call the getNasaEvents function
   getNasaEvents();
 
 }
