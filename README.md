@@ -36,3 +36,4 @@ A system for alerting users to local and regional disasters using the NASA EONET
 * [Kue](https://www.npmjs.com/package/kue) - manages background tasks in Node.js backends.
 * [More Kue](https://www.javascripttuts.com/create-node-js-background-task-using-kue-workers/)
 * [CSS Color Scheme Picker](https://paletton.com/#uid=7340w0kl1Wx1x+IcEXDsUWkWEVB)
+* [cURL to AJAX request converter](https://reqbin.com/req/javascript/c-wyuctivp/convert-curl-to-javascript)
