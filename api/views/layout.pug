@@ -5,4 +5,14 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    div.container
+      p
+        a(href="http://localhost:3000/")  Home 
+        | |
+        a(href="http://localhost:3000/events")  Events
+        | |
+        a(href="http://localhost:3000/users")  Users 
+        | |
+        a(href="http://localhost:3000/about")  About
+        | 
     block content
