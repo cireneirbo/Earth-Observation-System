@@ -2,6 +2,7 @@
 const axios = require("axios");
 const async = require("async");
 const { body, validationResult } = require('express-validator');
+const Event = require('../models/event');
 
 // Make a request for data from NASA API
 exports.index = function (req, res, next) {
@@ -26,3 +27,16 @@ exports.index = function (req, res, next) {
   getNasaEvents();
 
 }
+
+// Display list of all Events.
+exports.events_list = function(req, res, next) {
+
+    Event.find()
+        .sort([['eonet_title', 'ascending']])
+        .exec(function (err, list_events) {
+            if (err) { return next(err); }
+            //Successful, so render
+            res.render('events_list', { title: 'Events List', events_list: list_events });
+        });
+  
+};

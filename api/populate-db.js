@@ -24,7 +24,7 @@ console.log('This script populates some initial events data to the database.');
 const events = [];
 
 // create event and save event to database
-function eventCreate(id, title, description, link, closed, categories, sources, geometry) {
+function eventCreate(id, title, description, link, closed, categories, sources, geometry, cb) {
   // create an object to pass in to new Event(object)
   eventDetail = {
     id: id,
@@ -43,9 +43,11 @@ function eventCreate(id, title, description, link, closed, categories, sources, 
   // testing console.log output to save
   // console.log(id, title, description, link, closed, categories, sources, geometry);
   console.log(eventDetail);
+  console.log(event);
+  //events.push(event);
 
   // save event to db
-  /*event.save(function (err) {
+  event.save(function (err) {
     if(err) {
       console.log('ERROR CREATING Event: ' + event);
       cb(err, null);
@@ -54,14 +56,14 @@ function eventCreate(id, title, description, link, closed, categories, sources, 
     console.log('New Event: ' + event);
     events.push(event);
     cb(null, event);
-  });*/
+  });
 
 }
 
 
 
 
-
+/*
 // GET request to return events data from EONET
 async function getNasaEvents() {
 
@@ -70,28 +72,38 @@ async function getNasaEvents() {
   
   try {
       const response = await axios.get(nasaApiUrl);
-      const arr = response.data.events;
-      // console.log(response.data.events);
-      // eventCreate(response.data.events[1][0], response.data.events[1][1], response.data.events[1][2], response.data.events[1][3], response.data.events[1][4], response.data.events[1][5], response.data.events[1][6], response.data.events[1][7]);
-      for(let i = 0; i < arr.length; i++) {
-        //for(let y = 0; y < response[i].length; y++) {
-          eventCreate(arr[i].id, arr[i].title, arr[i].description, arr[i].link, arr[i].closed, arr[i].categories, arr[i].sources, arr[i].geometry);
-          // console.log(arr[i].id, arr[i].title, arr[i].description, arr[i].link, arr[i].closed, arr[i].categories, arr[i].sources, arr[i].geometry);
-        //}
+      const obj = response.data.events;
+      
+      for(let i = 0; i < obj.length; i++) {
+        eventCreate(obj[i].id, obj[i].title, obj[i].description, obj[i].link, obj[i].closed, obj[i].categories, obj[i].sources, obj[i].geometry);
       }
       return response.data.events;
   } catch (error) {
       console.error(error);
   }
 
-}
+}*/
 
 //const data = getNasaEvents();
 
 function createEvents(cb) {
   async.parallel([
-    function(callback) {
-      const data = getNasaEvents();
+    async function(callback) {
+      //const data = getNasaEvents();
+      // declare url
+      const nasaApiUrl = "https://eonet.sci.gsfc.nasa.gov/api/v3/events?limit=5&days=400&source=InciWeb&status=open";
+      
+      try {
+          const response = await axios.get(nasaApiUrl);
+          const obj = response.data.events;
+          
+          for(let i = 0; i < obj.length; i++) {
+            eventCreate(obj[i].id, obj[i].title, obj[i].description, obj[i].link, obj[i].closed, obj[i].categories, obj[i].sources, obj[i].geometry, callback);
+          }
+          //return response.data.events;
+      } catch (error) {
+          console.error(error);
+      }
       //console.log(data);
       /*data.forEach(element => {
         eventCreate(element[0], element[1], element[2], element[3], element[4], element[5], element[6], element[7])
@@ -113,10 +125,10 @@ async.series([
 // Optional callback
 function(err, results) {
     if (err) {
-        console.log('FINAL ERR: '+err);
+        console.log('FINAL ERR: '+ err);
     }
     else {
-        console.log('BOOKInstances: '+bookinstances);
+        console.log('Events: '+ events);
         
     }
     // All done, disconnect from database

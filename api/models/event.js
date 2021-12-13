@@ -9,7 +9,7 @@ const EventSchema = new Schema(
     eonet_title: {type: String, required: true, maxLength: 100},
     eonet_description: {type: String, required: false, maxLength: 500},
     eonet_link: {type: String, required: true, maxLength: 100},
-    eonet_closed: {type: String, required: true, maxLength: 10},
+    eonet_closed: {},//{type: String, required: true, maxLength: 10},
     eonet_categories: {type: Array},
     eonet_sources: {type: Array},
     eonet_geometry: {type: Array},
