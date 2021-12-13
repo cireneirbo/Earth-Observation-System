@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const events_controller = require('../controllers/eventsController');
 
 /* GET users listing. */
-router.get('/', events_controller.events_list);
+router.get('/', function(req, res) {
+  res.send("Not implemented at this time.");
+});
 
 module.exports = router;
