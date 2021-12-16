@@ -4,8 +4,13 @@ const async = require("async");
 const { body, validationResult } = require('express-validator');
 const Event = require('../models/event');
 
-// Make a request for data from NASA API
-exports.index = function (req, res, next) {
+// Display links for all events pages
+exports.index = function(req, res, next) {
+    res.render('events_home', { title: 'EONET Events Links' } );
+}
+
+// Make and Check a request for data from NASA API
+exports.events_check = function (req, res, next) {
 
   // declare url
   const nasaApiUrl = "https://eonet.sci.gsfc.nasa.gov/api/v3/events?limit=5&days=400&source=InciWeb&status=open";
@@ -19,7 +24,7 @@ exports.index = function (req, res, next) {
           console.log(response.data);
           console.log(response.data.events[1]);
           console.log("coordinates" + response.data.events[1].geometry[0].coordinates);
-          res.render('events', { title: 'EONET Events', events: response.data } );
+          res.render('events_check', { title: 'EONET Events', events: response.data } );
 
       } catch (error) {
 
