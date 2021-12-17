@@ -94,30 +94,23 @@ exports.event_create_get = function(req, res, next) {
 exports.event_create_post = [
 
     // Validate and sanitize fields.
-    
-
-    
-    
-
     body('eonet_id').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_id must be specified.')
         .isAlphanumeric().withMessage('eonet_id has non-alphanumeric characters.'),
     body('eonet_title').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_title must be specified.')
         .isAlphanumeric().withMessage('eonet_title has non-alphanumeric characters.'),
     body('eonet_description').trim().isLength({ min: 1, max: 500 }).escape().withMessage('eonet_description must be specified.')
         .isAlphanumeric().withMessage('eonet_description has non-alphanumeric characters.'),
-    body('eonet_link').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_id must be specified.')
-        .isAlphanumeric().withMessage('eonet_id has non-alphanumeric characters.'),
-    body('eonet_closed').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_id must be specified.')
-        .isAlphanumeric().withMessage('eonet_id has non-alphanumeric characters.'),
-    body('eonet_categories').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_id must be specified.')
-        .isAlphanumeric().withMessage('eonet_id has non-alphanumeric characters.'),
-    body('eonet_sources').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_id must be specified.')
-        .isAlphanumeric().withMessage('eonet_id has non-alphanumeric characters.'),
-    body('eonet_geometry').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_id must be specified.')
-        .isAlphanumeric().withMessage('eonet_id has non-alphanumeric characters.'),
+    body('eonet_link').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_link must be specified.')
+        .isAlphanumeric().withMessage('eonet_link has non-alphanumeric characters.'),
+    body('eonet_closed').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_closed must be specified.')
+        .isAlphanumeric().withMessage('eonet_closed has non-alphanumeric characters.'),
+    body('eonet_categories').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_categories must be specified.')
+        .isAlphanumeric().withMessage('eonet_categories has non-alphanumeric characters.'),
+    body('eonet_sources').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_sources must be specified.')
+        .isAlphanumeric().withMessage('eonet_sources has non-alphanumeric characters.'),
+    body('eonet_geometry').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_geometry must be specified.')
+        .isAlphanumeric().withMessage('eonet_geometry has non-alphanumeric characters.'),
     
-    
-
     // Process request after validation and sanitization.
     (req, res, next) => {
 
@@ -153,3 +146,136 @@ exports.event_create_post = [
     }
 ];
 
+// Display Event delete form on GET.
+exports.event_delete_get = function(req, res, next) {
+
+    async.parallel({
+        event: function(callback) {
+            Event.findById(req.params.id).exec(callback)
+        },/*
+        authors_books: function(callback) {
+            Book.find({ 'author': req.params.id }).exec(callback)
+        },*/
+    }, function(err, results) {
+        if (err) { return next(err); }
+        if (results.event==null) { // No results.
+            res.redirect('/events');
+        }
+        // Successful, so render.
+        res.render('event_delete', { title: 'Delete Event', event: results.event } );
+    });
+
+};
+
+// Handle Event delete on POST.
+exports.event_delete_post = function(req, res, next) {
+
+    async.parallel({
+        event: function(callback) {
+          Event.findById(req.body.eventid).exec(callback)
+        },/*
+        authors_books: function(callback) {
+          Book.find({ 'author': req.body.authorid }).exec(callback)
+        },*/
+    }, function(err, results) {
+        if (err) { return next(err); }
+        // Success
+        /*
+        if (results.authors_books.length > 0) {
+            // Author has books. Render in same way as for GET route.
+            res.render('author_delete', { title: 'Delete Author', author: results.author, author_books: results.authors_books } );
+            return;
+        }*/
+        else {
+            // Delete object and redirect to the list of events.
+            Event.findByIdAndRemove(req.body.eventid, function deleteEvent(err) {
+                if (err) { return next(err); }
+                // Success - go to event list
+                res.redirect('/events')
+            })
+        }
+    });
+    
+};
+
+// Display Event update form on GET.
+exports.event_update_get = function(req, res, next) {
+    
+    // Get events for form.
+    async.parallel({
+        event: function(callback) {
+            Event.findById(req.params.id).populate('eonet_id').populate('eonet_title').exec(callback);
+        },/*
+        books: function(callback) {
+            Book.find(callback);
+        },*/
+    }, function(err, results) {
+        if (err) { return next(err); }
+        if (results.event==null) { // No results.
+            let err = new Error('Event not found');
+            err.status = 404;
+            return next(err);
+        }
+        // Success.
+        res.render('event_form', { title: 'Update Event', event: results.event });
+    });
+
+};
+
+// Handle Event update on POST.
+exports.event_update_post = [
+
+    // Validate and sanitize fields.
+    body('eonet_id').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_id must be specified.')
+        .isAlphanumeric().withMessage('eonet_id has non-alphanumeric characters.'),
+    body('eonet_title').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_title must be specified.')
+        .isAlphanumeric().withMessage('eonet_title has non-alphanumeric characters.'),
+    body('eonet_description').trim().isLength({ min: 1, max: 500 }).escape().withMessage('eonet_description must be specified.')
+        .isAlphanumeric().withMessage('eonet_description has non-alphanumeric characters.'),
+    body('eonet_link').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_link must be specified.')
+        .isAlphanumeric().withMessage('eonet_link has non-alphanumeric characters.'),
+    body('eonet_closed').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_closed must be specified.')
+        .isAlphanumeric().withMessage('eonet_closed has non-alphanumeric characters.'),
+    body('eonet_categories').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_categories must be specified.')
+        .isAlphanumeric().withMessage('eonet_categories has non-alphanumeric characters.'),
+    body('eonet_sources').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_sources must be specified.')
+        .isAlphanumeric().withMessage('eonet_sources has non-alphanumeric characters.'),
+    body('eonet_geometry').trim().isLength({ min: 1, max: 100 }).escape().withMessage('eonet_geometry must be specified.')
+        .isAlphanumeric().withMessage('eonet_geometry has non-alphanumeric characters.'),
+
+    // Process request after validation and sanitization.
+    (req, res, next) => {
+
+        // Extract the validation errors from a request.
+        const errors = validationResult(req);
+
+        // Create an Event object with escaped/trimmed data and old id.
+        const event = new Event(
+            { 
+                eonet_id: req.body.eonet_id,
+                eonet_title: req.body.eonet_title,
+                eonet_description: req.body.eonet_description,
+                eonet_link: req.body.eonet_link,
+                eonet_closed: req.body.eonet_closed,
+                eonet_categories: req.body.eonet_categories,
+                eonet_sources: req.body.eonet_sources,
+                eonet_geometry: req.body.eonet_geometry,
+                _id:req.params.id //This is required, or a new ID will be assigned!
+            }
+        );
+
+        if (!errors.isEmpty()) {
+            // There are errors. Render form again with sanitized values/error messages.
+            res.render('event_form', { title: 'Update Event', event: event, errors: errors.array() });
+            return;
+        }
+        else {
+            // Data from form is valid. Update the record.
+            Event.findByIdAndUpdate(req.params.id, event, {}, function (err, theevent) {
+                if (err) { return next(err); }
+                   // Successful - redirect to event detail page.
+                   res.redirect(theevent.url);
+                });
+        }
+    }
+];
