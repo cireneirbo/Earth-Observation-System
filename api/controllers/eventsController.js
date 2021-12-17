@@ -81,10 +81,6 @@ exports.event_detail = function(req, res, next) {
 
 };
 
-
-//////////////////////////////
-
-
 // Display Event create form on GET.
 exports.event_create_get = function(req, res, next) {
     res.render('event_form', { title: 'Create Event'});
