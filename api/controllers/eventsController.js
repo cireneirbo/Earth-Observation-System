@@ -32,12 +32,9 @@ exports.events_check = function (req, res, next) {
           res.render('error', { error: error});
 
       }
-
   }
-
   // Call the getNasaEvents function
   getNasaEvents();
-
 }
 
 // Display list of all Events.
