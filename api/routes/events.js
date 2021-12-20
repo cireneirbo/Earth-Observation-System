@@ -10,6 +10,6 @@ router.get('/', events_controller.index);
 router.get('/check', events_controller.events_check);
 
 /* GET all events listing. */
-router.get('/list', events_controller.events_list);
+//router.get('/list', events_controller.events_list);
 
 module.exports = router;

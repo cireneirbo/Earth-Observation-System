@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 const { DateTime } = require('luxon');
 
 const Schema = mongoose.Schema;
@@ -39,3 +39,4 @@ EventSchema
 
 //Export model
 module.exports = mongoose.model('Event', EventSchema);
+*/

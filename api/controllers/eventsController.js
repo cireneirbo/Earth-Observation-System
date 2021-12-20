@@ -1,8 +1,8 @@
 // import libraries and project files
 const axios = require("axios");
 const async = require("async");
-const { body, validationResult } = require('express-validator');
-const Event = require('../models/event');
+//const { body, validationResult } = require('express-validator');
+//const Event = require('../models/event');
 
 // Display links for all events pages
 exports.index = function(req, res, next) {
@@ -13,7 +13,7 @@ exports.index = function(req, res, next) {
 exports.events_check = function (req, res, next) {
 
   // declare url
-  const nasaApiUrl = "https://eonet.sci.gsfc.nasa.gov/api/v3/events?limit=5&days=400&source=InciWeb&status=open";
+  const nasaApiUrl = "https://eonet.sci.gsfc.nasa.gov/api/v3/events?limit=20&days=400&source=InciWeb&status=open";
 
   // declare GET request to return events data from EONET
   async function getNasaEvents() {
@@ -36,7 +36,7 @@ exports.events_check = function (req, res, next) {
   // Call the getNasaEvents function
   getNasaEvents();
 }
-
+/*
 // Display list of all Events.
 exports.events_list = function(req, res, next) {
 
@@ -61,10 +61,7 @@ exports.event_detail = function(req, res, next) {
             Event.findById(req.params.id)
               .exec(callback)
         },
-        /*events_books: function(callback) {
-          Book.find({ 'author': req.params.id },'title summary')
-          .exec(callback)
-        },*/
+        
     }, function(err, results) {
         if (err) { return next(err); } // Error in API usage.
         if (results.event==null) { // No results.
@@ -145,10 +142,7 @@ exports.event_delete_get = function(req, res, next) {
     async.parallel({
         event: function(callback) {
             Event.findById(req.params.id).exec(callback)
-        },/*
-        authors_books: function(callback) {
-            Book.find({ 'author': req.params.id }).exec(callback)
-        },*/
+        },
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.event==null) { // No results.
@@ -166,19 +160,11 @@ exports.event_delete_post = function(req, res, next) {
     async.parallel({
         event: function(callback) {
           Event.findById(req.body.eventid).exec(callback)
-        },/*
-        authors_books: function(callback) {
-          Book.find({ 'author': req.body.authorid }).exec(callback)
-        },*/
+        },
     }, function(err, results) {
         if (err) { return next(err); }
         // Success
-        /*
-        if (results.authors_books.length > 0) {
-            // Author has books. Render in same way as for GET route.
-            res.render('author_delete', { title: 'Delete Author', author: results.author, author_books: results.authors_books } );
-            return;
-        }*/
+        
         else {
             // Delete object and redirect to the list of events.
             Event.findByIdAndRemove(req.body.eventid, function deleteEvent(err) {
@@ -198,10 +184,7 @@ exports.event_update_get = function(req, res, next) {
     async.parallel({
         event: function(callback) {
             Event.findById(req.params.id).populate('eonet_id').populate('eonet_title').exec(callback);
-        },/*
-        books: function(callback) {
-            Book.find(callback);
-        },*/
+        },
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.event==null) { // No results.
@@ -272,3 +255,4 @@ exports.event_update_post = [
         }
     }
 ];
+*/

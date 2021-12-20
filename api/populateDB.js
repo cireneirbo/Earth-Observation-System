@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 // run this script by typing 'node populateDB.js' into the terminal
-
+/*
 // import libraries and files
 const async = require('async');
 const axios = require('axios');
@@ -140,3 +140,4 @@ function(err, results) {
     // All done, disconnect from database
     mongoose.connection.close();
 });
+*/

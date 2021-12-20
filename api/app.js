@@ -12,7 +12,7 @@ const eventsRouter = require('./routes/events');
 const aboutRouter = require('./routes/about');
 
 const app = express();
-
+/*
 // Setting up Mongoose and MongoDB
 const mongoose = require('mongoose');                                                                                             //Import the mongoose module
 const { doesNotThrow } = require('assert');
@@ -23,7 +23,7 @@ const mongoDB = `mongodb+srv://${dbUserName}:${dbPassword}@cluster0.umoy2.mongod
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});                                                     //Set up default mongoose connection
 const db = mongoose.connection;                                                                                                   //Get the default connection
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));       
-
+*/
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
