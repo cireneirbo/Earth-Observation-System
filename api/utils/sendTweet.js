@@ -16,9 +16,14 @@ for(let i = 0; i < events.length; i++) {
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 require('dotenv').config();
 
+let bearerToken = "Bearer " + process.env.TWITTER_BEARER_TOKEN;
+let accessToken = "Bearer " + process.env.TWITTER_ACCESS_TOKEN;
+
+
+/*
 //sample twitter request
 let url = "https://api.twitter.com/2/tweets/search/recent?query=from:kalefice";
-let bearerToken = "Bearer " + process.env.TWITTER_BEARER_TOKEN;
+
 let xhr = new XMLHttpRequest();
 xhr.open("GET", url);
 
@@ -38,3 +43,23 @@ xhr.onreadystatechange = function () {
 };
 
 xhr.send();
+
+*/
+// send tweet
+let url = "https://api.twitter.com/2/tweets";
+
+let xhr = new XMLHttpRequest();
+xhr.open("POST", url);
+
+xhr.setRequestHeader("Authorization", accessToken);
+xhr.setRequestHeader("Content-type", "application/json");
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+   }};
+
+let data = '{"text": "This Tweet has been brought to me by my own use of the Twitter API!"}';
+
+xhr.send(data);
