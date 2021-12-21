@@ -23,6 +23,7 @@ A system for alerting users to local and regional disasters using the NASA EONET
 * [Luxon](https://www.npmjs.com/package/luxon) - Converts Date strings into a more readable form.
 * [MongoDB]()
 * [Dotenv]()
+* [Twit](https://www.npmjs.com/package/twit) - a library for interacting with the Twitter API.
 
 
 ## Helpful Links

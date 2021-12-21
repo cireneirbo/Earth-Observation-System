@@ -13,11 +13,11 @@ for(let i = 0; i < events.length; i++) {
     }
 }
 */
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+//const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 require('dotenv').config();
 
-let bearerToken = "Bearer " + process.env.TWITTER_BEARER_TOKEN;
-let accessToken = "Bearer " + process.env.TWITTER_ACCESS_TOKEN;
+//let bearerToken = "Bearer " + process.env.TWITTER_BEARER_TOKEN;
+//let accessToken = "Bearer " + process.env.TWITTER_ACCESS_TOKEN;
 
 
 /*
@@ -45,6 +45,7 @@ xhr.onreadystatechange = function () {
 xhr.send();
 
 */
+/*
 // send tweet
 let url = "https://api.twitter.com/2/tweets";
 
@@ -63,3 +64,22 @@ xhr.onreadystatechange = function () {
 let data = '{"text": "This Tweet has been brought to me by my own use of the Twitter API!"}';
 
 xhr.send(data);
+*/
+
+const Twit = require('twit')
+
+const twit = new Twit({
+  consumer_key:         process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret:      process.env.TWITTER_CONSUMER_SECRET,
+  access_token:         process.env.TWITTER_ACCESS_TOKEN,
+  access_token_secret:  process.env.TWITTER_ACCESS_TOKEN_SECRET,
+  timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
+  strictSSL:            false,     // optional - requires SSL certificates to be valid.
+})
+
+//
+//  tweet 'hello world!'
+//
+twit.post('statuses/update', { status: 'This Tweet has been brought to me by my own use of the Twitter API!' }, function(err, data, response) {
+  console.log(data)
+})
