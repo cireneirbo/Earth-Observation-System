@@ -2,8 +2,15 @@ extends layout
 
 block content
   h1= title
-  p EOS uses several API's to achieve its purpose.
+
+  h3 Earth Observatory Natural Event Tracker API 
+
+  p   
+    | Disaster events are returned from NASA's 
+    a(href='https://eonet.gsfc.nasa.gov/docs/v3' target='_blank') EONET 
+    |  API and parsed for new events to be handled.
   h3 Twitter API 
+
   p
     | Data from the EONET API is tracked internally, and new events are posted to the 
     a(href='https://twitter.com/kalefice' target='_blank') developer's

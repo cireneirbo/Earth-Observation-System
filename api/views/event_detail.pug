@@ -2,19 +2,31 @@ extends layout
 
 block content 
     h1= title
-    p= event
     #container-event
-        table#event
-            tr 
-            th.table-id ID 
-            td.table-data #{eonet_id}
-            tr 
-            th.table-header Title
-            td.table-data #{eonet_title}
-            tr 
-            th.table-header Link 
-            td.table-data 
-                a(href=eonet_link) #{eonet_link}
-            tr 
-            th.table-header Lat, Long
-            td.table-data #{eonet_geometry[0].eonet_coordinates[1]}, #{eonet_geometry[0].eonet_coordinates[0]}
+        table#events
+            tr.trow
+                th.table-id ID 
+                td.table-data #{event.id}
+            tr.trow
+                th.table-header Title
+                td.table-data #{event.title}
+            tr.trow 
+                th.table-header Description 
+                td.table-data #{event.description}
+            tr.trow 
+                th.table-header Status
+                if !event.closed 
+                    td.table-data Open
+                else 
+                    td.table-data Closed
+            tr.trow
+                th.table-header Link 
+                td.table-data 
+                    a(href=event.link) #{event.link}
+            tr.trow
+                th.table-header Source
+                td.table-data 
+                    a(href=event.sources[0].url) #{event.sources[0].id}
+            tr.trow
+                th.table-header Lat, Long
+                td.table-data #{event.geometry[0].coordinates[1]}, #{event.geometry[0].coordinates[0]}
