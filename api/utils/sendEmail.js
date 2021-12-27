@@ -1,23 +1,23 @@
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const msg = {
-  to: 'test@example.com',
-  from: 'test@example.com', // Use the email address or domain you verified above
-  subject: 'Sending with Twilio SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-};
-//ES6
-sgMail
-  .send(msg)
-  .then(() => {}, error => {
-    console.error(error);
+require('dotenv').config();
 
-    if (error.response) {
-      console.error(error.response.body)
-    }
-  });
-//ES8
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const emailTo = "ejobrien315@gmail.com";
+const emailFrom = process.env.SENDGRID_EMAIL_SENDER;
+const emailSubject = "SendGrid number 2";
+const emailText = "This is my second email. Can you read it without the HTML added?";
+const emailHTML = `<p>${emailText}</p>`;
+
+// Create the email
+const msg = {
+  to: emailTo,
+  from: emailFrom, // Use the email address or domain you verified above
+  subject: emailSubject,
+  text: emailText,
+  html: emailHTML,
+};
+
+// Send the email
 (async () => {
   try {
     await sgMail.send(msg);
