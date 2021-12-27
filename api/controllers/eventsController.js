@@ -33,7 +33,7 @@ exports.events_check = function (req, res, next) {
         } catch (error) {
 
             console.error(error);
-            res.render('error', { error: error});
+            res.render('error', { error: error } );
 
         }
 
@@ -62,7 +62,7 @@ exports.events_detail = function(req, res, next) {
         } catch (error) {
 
             console.error(error);
-            res.render('error', { error: error});
+            res.render('error', { error: error } );
 
         }
 
