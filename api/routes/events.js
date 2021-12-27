@@ -6,10 +6,10 @@ const events_controller = require("../controllers/eventsController");
 /* GET events home page */
 router.get('/', events_controller.index);
 
-/* GET events check page. */
+/* GET events list page. */
 router.get('/check', events_controller.events_check);
 
-/* GET all events listing. */
-router.get('/list', events_controller.events_list);
+/* GET event detail page */
+router.get('/detail/:eventID', events_controller.events_detail);
 
 module.exports = router;

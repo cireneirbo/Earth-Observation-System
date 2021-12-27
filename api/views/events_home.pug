@@ -3,10 +3,13 @@ extends layout
 block content
     h1= title
     div.container
+    each link in links
         p
-            a(href="http://localhost:3000/events/list")  List
-            |
-        p
-            a(href="http://localhost:3000/events/check")  Check
-            |
+            a(href=link.url) #{link.text}
+            |   
+        
+    else
+        p This page has no url links.
+        
+        
             
