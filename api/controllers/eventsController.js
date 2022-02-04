@@ -7,7 +7,7 @@ const { response } = require("express");
 exports.index = function(req, res, next) {
 
     const links = [
-        { url: "http://localhost:3000/events/check", text: "Check for Events" }
+        { url: "http://localhost:9000/events/check", text: "Check for Events" }
     ];
 
     res.render('events_home', { title: 'EONET Events Links', links: links } );
@@ -26,7 +26,7 @@ exports.events_check = function (req, res, next) {
         try {
 
             const response = await axios.get(nasaApiUrl);
-            const eventPage = "http://localhost:3000/events/detail/"; // change this to '/events/detail/' route for the hosted site
+            const eventPage = "http://localhost:9000/events/detail/"; // change this to '/events/detail/' route for the hosted site
             
             res.render(pugPage, { title: pugTitle, events: response.data , eventPage: eventPage } );
 
