@@ -24,6 +24,7 @@ A system for alerting users to local and regional disasters using the NASA EONET
 * [MongoDB]()
 * [Dotenv]()
 * [Twit](https://www.npmjs.com/package/twit) - a library for interacting with the Twitter API.
+* [CORS](https://www.npmjs.com/package/cors) - enables cross-origin routing between frontend and backend.
 
 
 ## Helpful Links
