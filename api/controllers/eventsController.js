@@ -1,7 +1,7 @@
 // import libraries and project files
 const axios = require("axios");
-const async = require("async");
-const { response } = require("express");
+//const async = require("async");
+//const { response } = require("express");
 
 // Display links for all events pages
 exports.index = function(req, res, next) {
@@ -10,7 +10,8 @@ exports.index = function(req, res, next) {
         { url: "http://localhost:9000/events/check", text: "Check for Events" }
     ];
 
-    res.render('events_home', { title: 'EONET Events Links', links: links } );
+    // res.render('events_home', { title: 'EONET Events Links', links: links } );
+    res.send( { title: 'EONET Events Links', links: links } );
 
 }
 
@@ -28,12 +29,14 @@ exports.events_check = function (req, res, next) {
             const response = await axios.get(nasaApiUrl);
             const eventPage = "http://localhost:9000/events/detail/"; // change this to '/events/detail/' route for the hosted site
             
-            res.render(pugPage, { title: pugTitle, events: response.data , eventPage: eventPage } );
+            //res.render(pugPage, { title: pugTitle, events: response.data , eventPage: eventPage } );
+            res.send( { title: pugTitle, events: response.data , eventPage: eventPage } );
 
         } catch (error) {
 
             console.error(error);
-            res.render('error', { error: error } );
+            // res.render('error', { error: error } );
+            res.send( { error: error } );
 
         }
 
@@ -57,12 +60,14 @@ exports.events_detail = function(req, res, next) {
 
             const response = await axios.get(fetchURL);
             console.log(response.data);
-            res.render(eventPage, { title: eventID, event: response.data } );
+            //res.render(eventPage, { title: eventID, event: response.data } );
+            res.send( { title: eventID, event: response.data } );
 
         } catch (error) {
 
             console.error(error);
-            res.render('error', { error: error } );
+            // res.render('error', { error: error } );
+            res.send( { error: error } );
 
         }
 
