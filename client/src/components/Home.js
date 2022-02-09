@@ -2,10 +2,9 @@
 function Home() {
   return (
     <div>
-        <p>
-          Home Town
-        </p>
-        
+      <p>
+        Home
+      </p>
     </div>
   );
 }

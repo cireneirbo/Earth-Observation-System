@@ -1,15 +1,15 @@
 
-function List() {
+function Event() {
 
   
   return (
     <div>
         <p>
-          Hello
+          1 Event
         </p>
         
     </div>
   );
 }
 
-export default List;
+export default Event;
