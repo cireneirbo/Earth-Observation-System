@@ -3,12 +3,15 @@ function About() {
 
   
   return (
-    <div>
+    <main>
+      <fieldset className="page-field">
+        <h1>About</h1>
         <p>
           About
         </p>
+      </fieldset>
         
-    </div>
+    </main>
   );
 }
 

@@ -3,12 +3,16 @@ function Events() {
 
   
   return (
-    <div>
+
+    <main>
+      <fieldset className="page-field">
+        <h1>Events</h1>
         <p>
           Many Events
         </p>
+      </fieldset>
+    </main>
         
-    </div>
   );
 }
 
