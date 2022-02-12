@@ -2,7 +2,7 @@
 function Home() {
   return (
     <main>
-      <fieldset className="page-field">
+      <fieldset>
         <h1>Home</h1>
       
         <p>

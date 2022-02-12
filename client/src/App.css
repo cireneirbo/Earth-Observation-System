@@ -27,10 +27,10 @@ p {
   color: black;
 }
 
-.page-field {
+/* .page-field {
   padding-left: 5%;
   padding-right: 5%;
-}
+} */
 
 fieldset {
   border: 5px solid rgb(0, 0, 0);
@@ -38,6 +38,9 @@ fieldset {
   border-radius: 5px;
   background-color: white;
   opacity: 0.80;
+  width: 400px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 main {

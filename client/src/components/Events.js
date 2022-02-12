@@ -5,7 +5,7 @@ function Events() {
   return (
 
     <main>
-      <fieldset className="page-field">
+      <fieldset>
         <h1>Events</h1>
         <p>
           Many Events

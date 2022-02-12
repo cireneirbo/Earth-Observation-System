@@ -4,7 +4,7 @@ function About() {
   
   return (
     <main>
-      <fieldset className="page-field">
+      <fieldset>
       <h1>About</h1>
 
       <h3>Earth Observatory Natural Event Tracker API</h3>
