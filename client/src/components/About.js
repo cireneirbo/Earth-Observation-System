@@ -1,11 +1,30 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function About() {
 
+  const backendURL = "http://localhost:9000/about";
+
+  const [ isProcessed, setIsProcessed ] = useState(false);
+
+  const [ data, setData ] = useState("");
+
+  useEffect(() => {
+    if(isProcessed == false) {
+      axios.get(backendURL)
+      .then(res => {
+        setData(res.data);
+      }).catch(err => {
+        console.log(err);
+      });
+      return setIsProcessed(true);
+    }
+  }, []);
   
   return (
     <main>
       <fieldset>
-      <h1>About</h1>
+      <h1>{data.title}</h1>
 
       <h3>Earth Observatory Natural Event Tracker API</h3>
         <p>
