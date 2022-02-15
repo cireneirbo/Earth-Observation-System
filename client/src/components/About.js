@@ -20,7 +20,7 @@ function About() {
       return setIsProcessed(true);
     }
   }, []);
-  
+  console.log(data);
   return (
     <main>
       <fieldset>

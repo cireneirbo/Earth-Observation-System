@@ -1,36 +1,16 @@
 body {
-  margin: 10px;
-  padding: 0px;
-}
-
-main {
-  text-align: left;
-  margin: 2%;
-}
-
-body {
   background-image: url("../public/satelliteoverearth.png");
   background-size: auto;
   background-attachment: fixed;
+  margin: 0%;
+  padding: 0%;
 }
 
-input {
-  color: black;    
+main {
+  padding-left: 10%;
+  padding-right: 10%;
+  margin: 0%;
 }
-
-label {
-  color: black;
-}
-
-p {
-  word-wrap: break-word;
-  color: black;
-}
-
-/* .page-field {
-  padding-left: 5%;
-  padding-right: 5%;
-} */
 
 fieldset {
   border: 5px solid rgb(0, 0, 0);
@@ -38,12 +18,17 @@ fieldset {
   border-radius: 5px;
   background-color: white;
   opacity: 0.80;
-  width: 400px;
-  padding-left: 5%;
-  padding-right: 5%;
+  width: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
-main {
-  padding-left: 20%;
-  padding-right: 20%;
+p {
+  word-wrap: break-word;
+  color: black;
 }
+
+
+
