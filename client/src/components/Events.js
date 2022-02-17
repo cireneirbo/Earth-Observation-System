@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Events() {
 
@@ -19,26 +21,47 @@ function Events() {
       return setIsProcessed(true);
     }
   }, []);
-  
-  return (
-    <main>
-      <fieldset>
-      <h1>{data.title}</h1>
+  console.log(data)
 
-      <h3>Earth Observatory Natural Event Tracker API</h3>
-        <p>
-          Disaster events are returned from NASA's <a href='https://eonet.gsfc.nasa.gov/docs/v3' target='_blank'>EONET</a> API and parsed for new events to be handled.
-        </p>
+  if(data == "") {
+    return (
+      <main>
+        <fieldset>
+          <p>Awaiting API data...</p>
+        </fieldset>
+      </main>
+    );
+  } else {
+    return (
+      <main>
+        <fieldset>
 
-      <h3>Twitter API</h3>
-        <p>
-        Data from the EONET API is tracked internally, and new events are posted to the <a href='https://twitter.com/kalefice' target='_blank'>developer's</a> Twitter account. No user data is sent via the Twitter API.
-        </p>
+          <h1>{data.title}</h1>
 
-      </fieldset>
-        
-    </main>
-  );
+          <p>{data.events.description}</p>
+
+          <table>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Sources</th>
+            </tr>
+            {data.events.events.map(event => (
+              <tr key={event.id}>
+                <td><a href={`${data.eventPage}${event.id}`}>{event.id}</a></td>
+                <td>{event.title}</td>
+                <td>{event.categories[0].title}</td>
+                <td><a href={event.sources[0].url}>{event.sources[0].id}</a></td>
+              </tr>
+            ))}
+          </table>
+
+        </fieldset>
+          
+      </main>
+    );
+  }
 }
 
 export default Events;
