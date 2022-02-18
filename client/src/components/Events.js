@@ -58,7 +58,6 @@ function Events() {
           </table>
 
         </fieldset>
-          
       </main>
     );
   }

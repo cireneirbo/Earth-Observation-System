@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Events from './components/Events';
 import Event from './components/Event';
 import About from './components/About';
+import Error from './components/Error';
 import './index.css';
 import App from './App';
 
@@ -19,11 +20,7 @@ ReactDOM.render(
           <Route path="about" element={<About />} />
           <Route
             path="*"
-            element={
-              <div>
-                <h2>There's nothing here! Click a navigation link to escape this barren wasteland!</h2>
-              </div>
-            }
+            element={<Error />} 
           />
         </Route>
       </Routes>
