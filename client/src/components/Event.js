@@ -24,16 +24,44 @@ function Event() {
     }
   }, []);
   
-  return (
-    <main>
-      <fieldset>
-        <h1>{data.title}</h1>
+  if(data == "") {
+    return (
+      <main>
+        <fieldset>
+          <p>Awaiting API data...</p>
+        </fieldset>
+      </main>
+    );
+  } else {
+    return (
+      <main>
+        <fieldset>
 
-      
+          <h1>{data.title}</h1>
 
-      </fieldset>
-    </main>
-  );
+          {/* <p>{data.events.description}</p> */}
+
+          {/* <table>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Sources</th>
+            </tr>
+            {data.events.events.map(event => (
+              <tr key={event.id}>
+                <td><a href={`${data.eventPage}${event.id}`}>{event.id}</a></td>
+                <td>{event.title}</td>
+                <td>{event.categories[0].title}</td>
+                <td><a href={event.sources[0].url}>{event.sources[0].id}</a></td>
+              </tr>
+            ))}
+          </table> */}
+
+        </fieldset>
+      </main>
+    );
+  }
 }
 
 export default Event;

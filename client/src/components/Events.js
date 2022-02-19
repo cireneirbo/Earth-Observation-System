@@ -5,6 +5,7 @@ function Events() {
 
   
   const backendURL = "http://localhost:9000/events/check";
+  const frontendURL = "http://localhost:3000/events/";
 
   const [ isProcessed, setIsProcessed ] = useState(false);
 
@@ -49,7 +50,7 @@ function Events() {
             </tr>
             {data.events.events.map(event => (
               <tr key={event.id}>
-                <td><a href={`${data.eventPage}${event.id}`}>{event.id}</a></td>
+                <td><a href={`${frontendURL}${event.id}`}>{event.id}</a></td>
                 <td>{event.title}</td>
                 <td>{event.categories[0].title}</td>
                 <td><a href={event.sources[0].url}>{event.sources[0].id}</a></td>
