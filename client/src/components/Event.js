@@ -7,6 +7,7 @@ function Event() {
   let params = useParams();
 
   const backendURL = "http://localhost:9000/events/detail/" + params.eventName;
+  const frontendURL = "http://localhost:3000/events/";
 
   const [ isProcessed, setIsProcessed ] = useState(false);
 
@@ -23,7 +24,7 @@ function Event() {
       return setIsProcessed(true);
     }
   }, []);
-  
+  console.log(data);
   if(data == "") {
     return (
       <main>
@@ -39,24 +40,11 @@ function Event() {
 
           <h1>{data.title}</h1>
 
-          {/* <p>{data.events.description}</p> */}
+          <p>{data.event.title}</p>
+          <p><a href={`${frontendURL}${data.event.id}`}>{data.event.id}</a></p>
+          <p>{data.event.categories[0].title}</p>
+          <p><a href={data.event.sources[0].url}>{data.event.sources[0].id}</a></p>
 
-          {/* <table>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Sources</th>
-            </tr>
-            {data.events.events.map(event => (
-              <tr key={event.id}>
-                <td><a href={`${data.eventPage}${event.id}`}>{event.id}</a></td>
-                <td>{event.title}</td>
-                <td>{event.categories[0].title}</td>
-                <td><a href={event.sources[0].url}>{event.sources[0].id}</a></td>
-              </tr>
-            ))}
-          </table> */}
 
         </fieldset>
       </main>
