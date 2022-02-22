@@ -40,10 +40,25 @@ function Event() {
 
           <h1>{data.title}</h1>
 
-          <p>{data.event.title}</p>
-          <p><a href={`${frontendURL}${data.event.id}`}>{data.event.id}</a></p>
-          <p>{data.event.categories[0].title}</p>
-          <p><a href={data.event.sources[0].url}>{data.event.sources[0].id}</a></p>
+          <table>
+            <tr>
+              <th>ID</th>
+              <td><a href={`${frontendURL}${data.event.id}`}>{data.event.id}</a></td>
+            </tr>
+            <tr>
+              <th>Title</th>
+              <td>{data.event.title}</td>
+            </tr>
+            <tr>
+              <th>Categories</th>
+              <td>{data.event.categories[0].title}</td>
+            </tr>
+            <tr>
+              <th>Sources</th>
+              <td><a href={data.event.sources[0].url}>{data.event.sources[0].id}</a></td>
+            </tr>
+          </table>
+          
 
 
         </fieldset>
