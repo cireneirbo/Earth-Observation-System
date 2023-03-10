@@ -1,6 +1,8 @@
 # Earth-Observation-System
 A system for alerting users to local and regional disasters using the NASA EONET API.
 
+Instead of using Twitter to send an alert, could use a web crawler to attach a news article about each disaster from ap news or reuters. Less interconnectivity but still quite impressive. Maybe moreso, though less functional as an alert. Users have to check the site. But then I can remove MongoDB and Twitter. Faster project.
+
 ## Getting Started
 * Fork or Clone repository
 * install dependencies with `npm install`
