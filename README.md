@@ -3,6 +3,8 @@ A system for alerting users to local and regional disasters using the NASA EONET
 
 Instead of using Twitter to send an alert, could use a web crawler to attach a news article about each disaster from ap news or reuters. Less interconnectivity but still quite impressive. Maybe moreso, though less functional as an alert. Users have to check the site. But then I can remove MongoDB and Twitter. Faster project.
 
+https://apnews.com/hub/us-news
+
 ## Getting Started
 * Fork or Clone repository
 * install dependencies with `npm install`
