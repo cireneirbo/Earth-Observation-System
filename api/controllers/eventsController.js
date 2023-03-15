@@ -19,14 +19,15 @@ exports.index = function(req, res, next) {
 exports.events_check = function (req, res, next) {
 
     // declare url
-    const nasaApiUrl = "https://eonet.sci.gsfc.nasa.gov/api/v3/events?limit=20&days=400&status=open";
+    const nasaApiUrl = "https://eonet.gsfc.nasa.gov/api/v3/events?limit=20&days=400&status=open";
 
     // declare GET request to return events data from EONET
     async function getNasaEvents(pugPage, pugTitle, fetchURL) {
 
         try {
 
-            const response = await axios.get(nasaApiUrl);
+            // const response = await axios.get(nasaApiUrl);
+            const response = await axios.get(fetchURL);
             const eventPage = "http://localhost:9000/events/detail/"; // change this to '/events/detail/' route for the hosted site
             
             //res.render(pugPage, { title: pugTitle, events: response.data , eventPage: eventPage } );
@@ -51,7 +52,7 @@ exports.events_check = function (req, res, next) {
 exports.events_detail = function(req, res, next) {
 
     // declare the URL
-    const nasaEventApiUrl = "https://eonet.sci.gsfc.nasa.gov/api/v3/events/" + req.params.eventID;
+    const nasaEventApiUrl = "https://eonet.gsfc.nasa.gov/api/v3/events/" + req.params.eventID;
     
     // declare GET request to return events data from EONET
     async function getSingleNasaEvent(eventPage, eventID, fetchURL) {
