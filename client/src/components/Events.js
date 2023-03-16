@@ -47,6 +47,7 @@ function Events() {
               <th>Title</th>
               <th>Category</th>
               <th>Sources</th>
+              <th>Date of Event</th>
             </tr>
             {data.events.events.map(event => (
               <tr key={event.id}>
@@ -54,6 +55,7 @@ function Events() {
                 <td>{event.title}</td>
                 <td>{event.categories[0].title}</td>
                 <td><a href={event.sources[0].url}>{event.sources[0].id}</a></td>
+                <td>{event.geometry[event.geometry.length - 1].date.slice(0,10)}</td>
               </tr>
             ))}
           </table>
